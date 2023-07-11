@@ -4,10 +4,12 @@ import pandas
 import uuid
 
 def main():
-    os.makedirs('data/nyse_all/nyse_json')
-    for i in glob.glob('data/nyse_all/nyse_data/*'):
+    SRC_DIR = os.environ['src_dir']
+    TGT_DIR = os.environ['tgt_dir']
+    os.makedirs(f'{TGT_DIR}')
+    for i in glob.glob(f'{SRC_DIR}/*'):
         data = pandas.read_csv(i, names=['ticker', 'trade_date', 'open_price', 'low_price', 'high_price', 'close_price', 'volume'])
-        data.to_json(f'data/nyse_all/nyse_json/part-{str(uuid.uuid1())}.json.gz',
+        data.to_json(f'{TGT_DIR}/part-{str(uuid.uuid1())}.json.gz',
                     orient='records',
                     lines=True
         )
