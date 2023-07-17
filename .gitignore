@@ -1,3 +1,6 @@
 nc-venv
 data
 logs
+build
+dist
+nyse_converter.egg-info
