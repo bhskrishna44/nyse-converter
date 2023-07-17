@@ -6,9 +6,10 @@ from dask import dataframe as dd
 import logging
 
 def main():
+    log_file_path = os.environ['log_path']
     logging.basicConfig(
-    filename='logs/ffc.log',
-    level=logging.INFO, 
+    filename=log_file_path,
+    level=logging.INFO,
     format='%(levelname)s %(asctime)s %(message)s',
     datefmt='%Y-%m-%d %I:%M:%S %p'
 )
