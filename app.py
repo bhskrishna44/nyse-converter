@@ -14,8 +14,9 @@ def main():
 )
     logging.info('Data conversion started')
     SRC_DIR = os.environ['src_dir']
-    SRC_FILE_PATTERN = os.environ.setdefault('src_file','NYSE*.txt.gz')
-    SRC_FILE_FORMAT = sorted(glob.glob(f'{SRC_DIR}/{SRC_FILE_PATTERN}'))
+    SRC_FILE_P = os.environ.setdefault('src_file','NYSE*.txt.gz')
+    SRC_FILE_FORMAT = sorted(glob.glob(f'{SRC_DIR}/{SRC_FILE_P}'))
+    #data/nyse_all/nyse_data/nyse*.txt.gz
     TGT_FILE_FORMAT = [i.replace('nyse_data','nyse_json').replace('txt','json') for i in SRC_FILE_FORMAT]
     data = dd.read_csv(SRC_FILE_FORMAT, names=['ticker', 'trade_date', 'open_price', 'low_price', 'high_price', 'close_price', 'volume'], blocksize=None)
     logging.info('Data Created,it will be written to json')
