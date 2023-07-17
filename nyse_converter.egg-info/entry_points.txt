@@ -1,0 +1,3 @@
+[console_scripts]
+nyse = nyse_converter:main
+
